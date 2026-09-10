@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "201522999805",
+    "project_id": "firestorefroga1-dbdc8",
+    "storage_bucket": "firestorefroga1-dbdc8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201522999805:android:2ad0c0e92327d31b00e994",
+        "android_client_info": {
+          "package_name": "com.example.firestorefroga1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9AjdEad9Sh3pS1F3fOb9TkFwdG2RfrQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201522999805:android:af263c5ac431ad8700e994",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9AjdEad9Sh3pS1F3fOb9TkFwdG2RfrQo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
