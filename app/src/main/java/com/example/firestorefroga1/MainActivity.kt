@@ -1,5 +1,7 @@
 package com.example.firestorefroga1
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -13,7 +15,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -64,8 +65,8 @@ fun AppNavigation(auth: FirebaseAuth) {
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Email") },
-            singleLine = true
+            singleLine = true,
+            label = { Text("Email") }
         )
         OutlinedTextField(
             value = pass,
@@ -80,17 +81,7 @@ fun AppNavigation(auth: FirebaseAuth) {
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Button(onClick = {
-                auth.signInWithEmailAndPassword(email, pass)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            val user = auth.currentUser
-                            // Sesión iniciada, accede a la app
-                            Toast.makeText(context, "Authentication successful.", Toast.LENGTH_SHORT).show()
-                        } else {
-                            // Error de autenticación
-                            Toast.makeText(context, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                kudeatuAuthentication(email, pass, auth, context)
 
                 //Limpiar campos
                 email = ""
@@ -105,4 +96,22 @@ fun AppNavigation(auth: FirebaseAuth) {
     }
 }
 
+fun kudeatuAuthentication(email: String, pass: String, auth: FirebaseAuth, context: Context){
+    auth.signInWithEmailAndPassword(email, pass)
+        .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val user = auth.currentUser
+                // Sesión iniciada, accede a la app
+                Toast.makeText(context, "Authentication successful.", Toast.LENGTH_SHORT).show()
 
+                //  OngiEtorriActivity.startActivity(context, user?.email ?: "")
+                // OngiEtorriPantailara
+                val intent = Intent(context, OngiEtorriActivity::class.java)
+                intent.putExtra("user", email);
+                context.startActivity(intent);
+            } else {
+                // Error de autenticación
+                Toast.makeText(context, "Authentication failed.", Toast.LENGTH_SHORT).show()
+            }
+        }
+}
